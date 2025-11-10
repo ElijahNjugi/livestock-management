@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "254446167237",
+    "project_id": "smartfarm-tracker",
+    "storage_bucket": "smartfarm-tracker.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254446167237:android:a7d25e78425a7909da7cac",
+        "android_client_info": {
+          "package_name": "com.example.smartfarmtracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsVl3aOPOZrN_IjBq4Fivr5_NpNm2c_iY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

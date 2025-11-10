@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="?attr/selectableItemBackground">
+
+    <!-- Animal Name -->
+    <TextView
+        android:id="@+id/textAnimalName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Animal Name"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Animal Type -->
+    <TextView
+        android:id="@+id/textAnimalType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type: Cow"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Age -->
+    <TextView
+        android:id="@+id/textAnimalAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age: 0 months"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Health Status -->
+    <TextView
+        android:id="@+id/textAnimalHealth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Health: Unknown"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Weight -->
+    <TextView
+        android:id="@+id/textAnimalWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weight: 0 kg"
+        android:textSize="14sp" />
+</LinearLayout>
