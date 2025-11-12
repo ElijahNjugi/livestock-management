@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_bg"
+    android:layout_marginBottom="8dp">
+
+    <TextView android:id="@+id/medDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textStyle="bold"/>
+
+    <TextView android:id="@+id/medTreatment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Treatment"/>
+
+    <TextView android:id="@+id/medNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notes"/>
+</LinearLayout>

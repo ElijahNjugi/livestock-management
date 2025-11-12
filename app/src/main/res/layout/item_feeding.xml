@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_bg"
+    android:layout_marginBottom="8dp">
+
+    <TextView android:id="@+id/feedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textStyle="bold"/>
+
+    <TextView android:id="@+id/feedType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food type"/>
+
+    <TextView android:id="@+id/feedQty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity"/>
+</LinearLayout>
