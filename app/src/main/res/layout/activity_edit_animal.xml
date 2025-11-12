@@ -2,169 +2,206 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="20dp"
+    android:background="#FAFAFA">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Title -->
         <TextView
-            android:id="@+id/editAnimalTitle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit Animal Details"
+            android:text="Edit Animal"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="16dp" />
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp" />
 
-        <!-- Basic Info -->
+        <!-- Name -->
         <EditText
             android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Animal Name" />
+            android:hint="Animal Name"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
+        <!-- Type -->
         <EditText
             android:id="@+id/editType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type (e.g., Cow, Dog, Chicken)" />
+            android:hint="Animal Type"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
+        <!-- Breed -->
         <EditText
             android:id="@+id/editBreed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Breed" />
+            android:hint="Breed"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
-        <!-- Gender Dropdown -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gender"
-            android:layout_marginTop="8dp" />
+        <!-- Gender Spinner -->
         <Spinner
             android:id="@+id/editGenderSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="8dp"
+            android:layout_marginBottom="10dp" />
 
+        <!-- Age -->
         <EditText
             android:id="@+id/editAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Age (years)"
-            android:inputType="number" />
+            android:hint="Age"
+            android:inputType="number"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
-        <!-- Health Dropdown -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Health Status"
-            android:layout_marginTop="8dp" />
+        <!-- Health Spinner -->
         <Spinner
             android:id="@+id/editHealthSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="8dp"
+            android:layout_marginBottom="10dp" />
 
-        <!-- Physical stats -->
+        <!-- Weight -->
         <EditText
             android:id="@+id/editWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Weight (kg)"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
+        <!-- Feed Type -->
         <EditText
             android:id="@+id/editFeedType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Feed Type" />
+            android:hint="Feed Type"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
+        <!-- Daily Feed Quantity -->
         <EditText
             android:id="@+id/editDailyFeedQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Daily Feed Quantity (kg)"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
+        <!-- Milk Production -->
         <EditText
             android:id="@+id/editMilkProduction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Milk Production (Liters/day)"
-            android:inputType="numberDecimal" />
+            android:hint="Milk Production (liters)"
+            android:inputType="numberDecimal"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
-        <!-- Dates -->
+        <!-- Last Feed Date -->
         <EditText
             android:id="@+id/editLastFeedDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Last Feed Date (YYYY-MM-DD)" />
+            android:hint="Last Feed Date"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
+        <!-- Next Checkup Date -->
         <EditText
             android:id="@+id/editNextCheckupDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Next Checkup Date (YYYY-MM-DD)" />
+            android:hint="Next Checkup Date"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
-        <!-- Lists (comma-separated) -->
+        <!-- Vaccinations -->
         <EditText
             android:id="@+id/editVaccinations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Vaccinations (comma-separated)"
-            android:inputType="textMultiLine"
-            android:lines="2"
-            android:gravity="top" />
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
+        <!-- Medications -->
         <EditText
             android:id="@+id/editMedications"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Medications (comma-separated)"
-            android:inputType="textMultiLine"
-            android:lines="2"
-            android:gravity="top" />
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
+        <!-- Diseases -->
         <EditText
             android:id="@+id/editDiseases"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Diseases (comma-separated)"
-            android:inputType="textMultiLine"
-            android:lines="2"
-            android:gravity="top" />
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
+        <!-- Offspring -->
         <EditText
             android:id="@+id/editOffspring"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Offspring IDs (comma-separated)"
-            android:inputType="textMultiLine"
-            android:lines="2"
-            android:gravity="top" />
+            android:hint="Offspring (comma-separated)"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
         <!-- Notes -->
         <EditText
             android:id="@+id/editNotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Notes or Additional Info"
-            android:inputType="textMultiLine"
-            android:lines="3"
-            android:gravity="top" />
+            android:hint="Notes"
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
 
-        <!-- Animal ID (non-editable) -->
+        <!-- Animal ID -->
         <EditText
             android:id="@+id/editAnimalId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Animal ID"
-            android:enabled="false"
-            android:textColorHint="@android:color/darker_gray"
-            android:layout_marginTop="8dp" />
+            android:background="@drawable/rounded_input_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="20dp"
+            android:enabled="false" />
 
         <!-- Update Button -->
         <Button
@@ -172,7 +209,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Update Animal"
-            android:layout_marginTop="24dp" />
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:padding="12dp"
+            android:layout_marginBottom="20dp" />
 
     </LinearLayout>
 </ScrollView>
