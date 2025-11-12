@@ -11,7 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.smartfarmtracker.model.Animal
-import com.example.smartfarmtracker.ui.fragments.AnimalFragmentsAdapter
+import com.example.smartfarmtracker.AnimalFragmentsAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
