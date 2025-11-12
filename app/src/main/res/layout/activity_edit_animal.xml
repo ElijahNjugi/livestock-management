@@ -1,105 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    android:background="#FAFAFA">
+    android:background="#FAFAFA"
+    android:padding="16dp"
+    tools:context=".EditAnimalActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
+        <!-- Title -->
         <TextView
+            android:id="@+id/editAnimalTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit Animal"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="16dp" />
 
         <!-- Name -->
-        <EditText
-            android:id="@+id/editName"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Animal Name"
-            android:background="@drawable/rounded_input_bg"
-            android:padding="12dp"
-            android:layout_marginBottom="10dp" />
+            android:hint="Name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Type -->
-        <EditText
-            android:id="@+id/editType"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Animal Type"
-            android:background="@drawable/rounded_input_bg"
-            android:padding="12dp"
-            android:layout_marginBottom="10dp" />
+            android:hint="Type"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Breed -->
-        <EditText
-            android:id="@+id/editBreed"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Breed"
-            android:background="@drawable/rounded_input_bg"
-            android:padding="12dp"
-            android:layout_marginBottom="10dp" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editBreed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Gender Spinner -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
         <Spinner
             android:id="@+id/editGenderSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_input_bg"
-            android:padding="8dp"
-            android:layout_marginBottom="10dp" />
+            android:spinnerMode="dropdown"
+            android:layout_marginBottom="12dp" />
 
         <!-- Age -->
-        <EditText
-            android:id="@+id/editAge"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Age"
-            android:inputType="number"
-            android:background="@drawable/rounded_input_bg"
-            android:padding="12dp"
-            android:layout_marginBottom="10dp" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Health Spinner -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Health Status"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
         <Spinner
             android:id="@+id/editHealthSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_input_bg"
-            android:padding="8dp"
-            android:layout_marginBottom="10dp" />
+            android:spinnerMode="dropdown"
+            android:layout_marginBottom="12dp" />
 
         <!-- Weight -->
-        <EditText
-            android:id="@+id/editWeight"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Weight (kg)"
-            android:inputType="numberDecimal"
-            android:background="@drawable/rounded_input_bg"
-            android:padding="12dp"
-            android:layout_marginBottom="10dp" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Animal ID (read-only) -->
-        <EditText
-            android:id="@+id/editAnimalId"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Animal ID"
-            android:background="@drawable/rounded_input_bg"
-            android:padding="12dp"
-            android:layout_marginBottom="20dp"
-            android:enabled="false" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editAnimalId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Update Button -->
         <Button
@@ -109,8 +153,6 @@
             android:text="Update Animal"
             android:backgroundTint="@color/green"
             android:textColor="@color/white"
-            android:textAllCaps="false"
-            android:padding="12dp"
             android:layout_marginBottom="20dp" />
 
     </LinearLayout>

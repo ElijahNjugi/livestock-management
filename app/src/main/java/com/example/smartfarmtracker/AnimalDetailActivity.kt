@@ -9,7 +9,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
 import com.example.smartfarmtracker.model.Animal
+import com.example.smartfarmtracker.ui.fragments.AnimalFragmentsAdapter
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
@@ -34,6 +38,8 @@ class AnimalDetailActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var editButton: Button
     private lateinit var deleteButton: Button
+    private lateinit var tabLayout: TabLayout
+    private lateinit var viewPager: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +48,7 @@ class AnimalDetailActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
 
+        // Views
         nameText = findViewById(R.id.animalNameText)
         typeText = findViewById(R.id.animalTypeText)
         breedText = findViewById(R.id.animalBreedText)
@@ -55,6 +62,8 @@ class AnimalDetailActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
         editButton = findViewById(R.id.editButton)
         deleteButton = findViewById(R.id.deleteButton)
+        tabLayout = findViewById(R.id.tabLayout)
+        viewPager = findViewById(R.id.viewPager)
 
         animalId = intent.getStringExtra("animalId") ?: ""
         val userId = auth.currentUser?.uid
@@ -64,6 +73,16 @@ class AnimalDetailActivity : AppCompatActivity() {
             finish()
             return
         }
+
+        // Set up fragments in ViewPager
+        val adapter = AnimalFragmentsAdapter(this, animalId)
+        viewPager.adapter = adapter
+
+        // Attach TabLayout to ViewPager
+        val tabTitles = arrayOf("Feeding", "Medical", "Notes", "Sales")
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = tabTitles[position]
+        }.attach()
 
         fetchAnimalDetails(userId, animalId)
 
@@ -81,7 +100,6 @@ class AnimalDetailActivity : AppCompatActivity() {
     private fun fetchAnimalDetails(userId: String, animalId: String) {
         progressBar.visibility = View.VISIBLE
 
-        // Use snapshot listener for real-time updates
         listener = db.collection("users").document(userId)
             .collection("animals").document(animalId)
             .addSnapshotListener { snapshot, error ->
@@ -136,6 +154,6 @@ class AnimalDetailActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        listener?.remove() // remove Firestore listener
+        listener?.remove()
     }
 }
