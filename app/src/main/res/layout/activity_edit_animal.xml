@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/editAnimalTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Animal Details"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Basic Info -->
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Animal Name" />
+
+        <EditText
+            android:id="@+id/editType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type (e.g., Cow, Dog, Chicken)" />
+
+        <EditText
+            android:id="@+id/editBreed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Breed" />
+
+        <!-- Gender Dropdown -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:layout_marginTop="8dp" />
+        <Spinner
+            android:id="@+id/editGenderSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Age (years)"
+            android:inputType="number" />
+
+        <!-- Health Dropdown -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Health Status"
+            android:layout_marginTop="8dp" />
+        <Spinner
+            android:id="@+id/editHealthSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Physical stats -->
+        <EditText
+            android:id="@+id/editWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Weight (kg)"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/editFeedType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Feed Type" />
+
+        <EditText
+            android:id="@+id/editDailyFeedQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Daily Feed Quantity (kg)"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/editMilkProduction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Milk Production (Liters/day)"
+            android:inputType="numberDecimal" />
+
+        <!-- Dates -->
+        <EditText
+            android:id="@+id/editLastFeedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Last Feed Date (YYYY-MM-DD)" />
+
+        <EditText
+            android:id="@+id/editNextCheckupDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Next Checkup Date (YYYY-MM-DD)" />
+
+        <!-- Lists (comma-separated) -->
+        <EditText
+            android:id="@+id/editVaccinations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Vaccinations (comma-separated)"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:gravity="top" />
+
+        <EditText
+            android:id="@+id/editMedications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Medications (comma-separated)"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:gravity="top" />
+
+        <EditText
+            android:id="@+id/editDiseases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Diseases (comma-separated)"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:gravity="top" />
+
+        <EditText
+            android:id="@+id/editOffspring"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Offspring IDs (comma-separated)"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:gravity="top" />
+
+        <!-- Notes -->
+        <EditText
+            android:id="@+id/editNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Notes or Additional Info"
+            android:inputType="textMultiLine"
+            android:lines="3"
+            android:gravity="top" />
+
+        <!-- Animal ID (non-editable) -->
+        <EditText
+            android:id="@+id/editAnimalId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Animal ID"
+            android:enabled="false"
+            android:textColorHint="@android:color/darker_gray"
+            android:layout_marginTop="8dp" />
+
+        <!-- Update Button -->
+        <Button
+            android:id="@+id/buttonUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Animal"
+            android:layout_marginTop="24dp" />
+
+    </LinearLayout>
+</ScrollView>

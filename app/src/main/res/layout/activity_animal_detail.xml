@@ -1,51 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Animal Name -->
         <TextView
-            android:id="@+id/animalDetailTitle"
-            android:layout_width="match_parent"
+            android:id="@+id/animalNameText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Animal Details"
-            android:textSize="22sp"
+            android:text="Animal Name"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:paddingBottom="20dp" />
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="12dp"/>
 
-        <TextView
-            android:id="@+id/textName"
+        <!-- Divider -->
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name: "
-            android:textSize="18sp" />
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="12dp"/>
 
+        <!-- Details -->
         <TextView
-            android:id="@+id/textType"
-            android:layout_width="match_parent"
+            android:id="@+id/animalTypeText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Type: "
-            android:textSize="18sp" />
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
 
         <TextView
-            android:id="@+id/textAge"
-            android:layout_width="match_parent"
+            android:id="@+id/animalBreedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Breed: "
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/animalAgeText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Age: "
-            android:textSize="18sp" />
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
 
         <TextView
-            android:id="@+id/textHealth"
+            android:id="@+id/animalGenderText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender: "
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/animalHealthText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Health Status: "
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/animalWeightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight: "
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/animalFeedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feed Type: "
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/animalNotesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notes: "
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/animalStatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: "
+            android:textSize="16sp"
+            android:paddingBottom="16dp"/>
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:paddingBottom="16dp"/>
+
+        <!-- Buttons -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Health: "
-            android:textSize="18sp" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/editButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,12 +21,14 @@ class ManageAnimalsActivity : AppCompatActivity() {
     private lateinit var fabAddAnimal: ImageButton
     private lateinit var tvTotalAnimals: TextView
     private lateinit var tvEmptyMessage: TextView
+    private lateinit var progressBar: ProgressBar
 
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
     private lateinit var adapter: AnimalAdapter
     private var animalsList = mutableListOf<Animal>()
     private var listener: ListenerRegistration? = null
+    private var isActivityActive = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,7 @@ class ManageAnimalsActivity : AppCompatActivity() {
         fabAddAnimal = findViewById(R.id.btnAddAnimal)
         tvTotalAnimals = findViewById(R.id.tvManageAnimalsTitle)
         tvEmptyMessage = findViewById(R.id.tvEmptyMessage)
+        progressBar = findViewById(R.id.progressBar) // Add this in your layout (optional)
 
         // Initialize Firebase
         db = FirebaseFirestore.getInstance()
@@ -46,13 +50,13 @@ class ManageAnimalsActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        // Floating action button - add new animal
+        // Add new animal button
         fabAddAnimal.setOnClickListener {
             val intent = Intent(this, AddAnimalActivity::class.java)
             startActivity(intent)
         }
 
-        // Load data
+        isActivityActive = true
         fetchAnimalsFromFirestore()
     }
 
@@ -63,41 +67,44 @@ class ManageAnimalsActivity : AppCompatActivity() {
             return
         }
 
-        // Real-time updates from Firestore
+        progressBar.visibility = View.VISIBLE
+
         listener = db.collection("users")
             .document(userId)
             .collection("animals")
             .addSnapshotListener { snapshot, error ->
+                if (!isActivityActive) return@addSnapshotListener // Prevent updates after destroy
+
+                progressBar.visibility = View.GONE
+
                 if (error != null) {
                     Toast.makeText(this, "Error: ${error.message}", Toast.LENGTH_LONG).show()
                     return@addSnapshotListener
                 }
 
-                if (snapshot != null && !snapshot.isEmpty) {
-                    animalsList.clear()
-                    for (doc in snapshot.documents) {
-                        val animal = doc.toObject(Animal::class.java)
-                        if (animal != null) animalsList.add(animal)
-                    }
-
-                    adapter.updateData(animalsList)
-                    tvTotalAnimals.text = "Manage Animals (${animalsList.size})"
-                    tvEmptyMessage.visibility = View.GONE
-                    recyclerView.visibility = View.VISIBLE
-                } else {
-                    // No animals found
+                if (snapshot == null || snapshot.isEmpty) {
                     animalsList.clear()
                     adapter.updateData(animalsList)
                     recyclerView.visibility = View.GONE
                     tvEmptyMessage.visibility = View.VISIBLE
                     tvTotalAnimals.text = "Manage Animals (0)"
+                } else {
+                    animalsList.clear()
+                    for (doc in snapshot.documents) {
+                        doc.toObject(Animal::class.java)?.let { animalsList.add(it) }
+                    }
+
+                    adapter.updateData(animalsList)
+                    recyclerView.visibility = View.VISIBLE
+                    tvEmptyMessage.visibility = View.GONE
+                    tvTotalAnimals.text = "Manage Animals (${animalsList.size})"
                 }
             }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        // Remove listener when activity is destroyed
+        isActivityActive = false
         listener?.remove()
     }
 }
