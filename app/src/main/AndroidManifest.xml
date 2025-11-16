@@ -34,13 +34,19 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
+        <!-- Home Activity -->
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartFarmTracker" />
+
         <!-- Manage Animals Hub -->
         <activity
             android:name=".ManageAnimalsActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
-        <!-- Animal Details (fixed name to match your actual class) -->
+        <!-- Animal Details -->
         <activity
             android:name=".AnimalDetailActivity"
             android:exported="false"
@@ -52,6 +58,7 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
+        <!-- Edit Animal -->
         <activity android:name=".EditAnimalActivity" />
 
     </application>

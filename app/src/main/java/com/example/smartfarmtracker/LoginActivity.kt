@@ -8,7 +8,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.example.smartfarmtracker.ManageAnimalsActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -39,8 +38,9 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                        // Navigate to new ManageAnimalsActivity
-                        startActivity(Intent(this, ManageAnimalsActivity::class.java))
+                        // Navigate to HomeActivity instead of ManageAnimalsActivity
+                        val intent = Intent(this, HomeActivity::class.java)
+                        startActivity(intent)
                         finish()
                     } else {
                         Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
