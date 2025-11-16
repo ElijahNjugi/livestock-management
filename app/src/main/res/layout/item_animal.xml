@@ -1,53 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:padding="12dp"
-    android:background="?attr/selectableItemBackground">
+    android:background="@drawable/card_bg"
+    android:elevation="2dp"
+    android:layout_marginBottom="8dp">
 
-    <!-- Animal Name -->
     <TextView
-        android:id="@+id/textAnimalName"
+        android:id="@+id/itemAnimalId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Animal Name"
+        android:text="ID"
         android:textStyle="bold"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:layout_marginBottom="4dp" />
 
-    <!-- Animal Type -->
     <TextView
-        android:id="@+id/textAnimalType"
+        android:id="@+id/itemAnimalType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Type: Cow"
-        android:textSize="14sp"
-        android:layout_marginBottom="4dp" />
+        android:text="Type"
+        android:layout_marginBottom="2dp" />
 
-    <!-- Age -->
     <TextView
-        android:id="@+id/textAnimalAge"
+        android:id="@+id/itemAnimalWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Age: 0 months"
-        android:textSize="14sp"
-        android:layout_marginBottom="4dp" />
+        android:text="Weight"
+        android:layout_marginBottom="2dp" />
 
-    <!-- Health Status -->
     <TextView
-        android:id="@+id/textAnimalHealth"
+        android:id="@+id/itemAnimalLastCheckup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Health: Unknown"
-        android:textSize="14sp"
-        android:layout_marginBottom="4dp" />
+        android:text="Last Checkup" />
 
-    <!-- Weight -->
-    <TextView
-        android:id="@+id/textAnimalWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weight: 0 kg"
-        android:textSize="14sp" />
 </LinearLayout>

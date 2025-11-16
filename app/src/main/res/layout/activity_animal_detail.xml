@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="#FAFAFA"
-    tools:context=".AnimalDetailActivity">
-
-    <!-- Animal Name -->
-    <TextView
-        android:id="@+id/animalNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Animal Name"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="12dp" />
+    android:background="#FAFAFA">
 
     <!-- Animal Info Card -->
     <LinearLayout
@@ -32,33 +17,34 @@
         android:layout_marginBottom="20dp">
 
         <TextView
+            android:id="@+id/animalIdText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Animal ID"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
             android:id="@+id/animalTypeText"
-            style="@style/AnimalInfoText" />
-        <TextView
-            android:id="@+id/animalBreedText"
-            style="@style/AnimalInfoText" />
-        <TextView
-            android:id="@+id/animalAgeText"
-            style="@style/AnimalInfoText" />
-        <TextView
-            android:id="@+id/animalGenderText"
-            style="@style/AnimalInfoText" />
-        <TextView
-            android:id="@+id/animalHealthText"
-            style="@style/AnimalInfoText" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type"
+            android:layout_marginBottom="8dp" />
+
         <TextView
             android:id="@+id/animalWeightText"
-            style="@style/AnimalInfoText" />
-        <TextView
-            android:id="@+id/animalFeedText"
-            style="@style/AnimalInfoText" />
-        <TextView
-            android:id="@+id/animalNotesText"
-            style="@style/AnimalInfoText" />
-        <TextView
-            android:id="@+id/animalStatusText"
-            style="@style/AnimalInfoText" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight"
+            android:layout_marginBottom="8dp" />
 
+        <TextView
+            android:id="@+id/animalLastCheckupText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Checkup"
+            android:layout_marginBottom="8dp" />
     </LinearLayout>
 
     <!-- Progress Bar -->
@@ -76,8 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="16dp">
+        android:gravity="center">
 
         <Button
             android:id="@+id/editButton"
@@ -98,23 +83,5 @@
             android:backgroundTint="@color/red"
             android:textColor="@color/white" />
     </LinearLayout>
-
-    <!-- TabLayout for Fragments -->
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabIndicatorColor="@color/green"
-        app:tabTextColor="@color/black"
-        app:tabSelectedTextColor="@color/green"
-        app:tabMode="fixed"
-        app:tabGravity="fill" />
-
-    <!-- ViewPager2 for fragments -->
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
 </LinearLayout>

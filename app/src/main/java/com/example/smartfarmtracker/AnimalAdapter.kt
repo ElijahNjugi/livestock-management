@@ -1,6 +1,5 @@
 package com.example.smartfarmtracker
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,15 +7,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartfarmtracker.model.Animal
 
-class AnimalAdapter(private var animals: List<Animal>) :
-    RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>() {
+class AnimalAdapter(
+    private val animals: List<Animal>,
+    private val onItemClick: (Animal) -> Unit
+) : RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>() {
 
-    class AnimalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textAnimalName: TextView = itemView.findViewById(R.id.textAnimalName)
-        val textAnimalType: TextView = itemView.findViewById(R.id.textAnimalType)
-        val textAnimalAge: TextView = itemView.findViewById(R.id.textAnimalAge)
-        val textAnimalHealth: TextView = itemView.findViewById(R.id.textAnimalHealth)
-        val textAnimalWeight: TextView = itemView.findViewById(R.id.textAnimalWeight)
+    inner class AnimalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val idText: TextView = view.findViewById(R.id.itemAnimalId)
+        val typeText: TextView = view.findViewById(R.id.itemAnimalType)
+        val weightText: TextView = view.findViewById(R.id.itemAnimalWeight)
+        val lastCheckupText: TextView = view.findViewById(R.id.itemAnimalLastCheckup)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalViewHolder {
@@ -27,25 +27,13 @@ class AnimalAdapter(private var animals: List<Animal>) :
 
     override fun onBindViewHolder(holder: AnimalViewHolder, position: Int) {
         val animal = animals[position]
-        holder.textAnimalName.text = animal.name.ifEmpty { "Unnamed Animal" }
-        holder.textAnimalType.text = "Type: ${animal.type.ifEmpty { "N/A" }}"
-        holder.textAnimalAge.text = "Age: ${animal.age} months"
-        holder.textAnimalHealth.text = "Health: ${animal.healthStatus.ifEmpty { "Unknown" }}"
-        holder.textAnimalWeight.text = "Weight: ${animal.weightKg} kg"
+        holder.idText.text = "ID: ${animal.id}"
+        holder.typeText.text = "Type: ${animal.type}"
+        holder.weightText.text = "Weight: ${animal.weight} kg"
+        holder.lastCheckupText.text = "Last Checkup: ${animal.lastCheckup.ifEmpty { "N/A" }}"
 
-        // Navigate to detail page
-        holder.itemView.setOnClickListener {
-            val context = holder.itemView.context
-            val intent = Intent(context, AnimalDetailActivity::class.java)
-            intent.putExtra("animalId", animal.id)
-            context.startActivity(intent)
-        }
+        holder.itemView.setOnClickListener { onItemClick(animal) }
     }
 
-    override fun getItemCount() = animals.size
-
-    fun updateData(newList: List<Animal>) {
-        animals = newList
-        notifyDataSetChanged()
-    }
+    override fun getItemCount(): Int = animals.size
 }

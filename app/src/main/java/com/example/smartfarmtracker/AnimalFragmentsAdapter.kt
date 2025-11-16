@@ -9,7 +9,6 @@ class AnimalFragmentsAdapter(
     private val animalId: String
 ) : FragmentStateAdapter(fragmentActivity) {
 
-    // List of fragments for the ViewPager2
     private val fragments: List<Fragment> = listOf(
         FeedingFragment.newInstance(animalId),
         MedicalFragment.newInstance(animalId),

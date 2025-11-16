@@ -1,6 +1,5 @@
 package com.example.smartfarmtracker
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -9,11 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
 import com.example.smartfarmtracker.model.Animal
-import com.example.smartfarmtracker.AnimalFragmentsAdapter
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
@@ -25,21 +20,13 @@ class AnimalDetailActivity : AppCompatActivity() {
     private lateinit var animalId: String
     private var listener: ListenerRegistration? = null
 
-    private lateinit var nameText: TextView
+    private lateinit var idText: TextView
     private lateinit var typeText: TextView
-    private lateinit var breedText: TextView
-    private lateinit var ageText: TextView
-    private lateinit var genderText: TextView
-    private lateinit var healthText: TextView
     private lateinit var weightText: TextView
-    private lateinit var feedText: TextView
-    private lateinit var notesText: TextView
-    private lateinit var statusText: TextView
+    private lateinit var lastCheckupText: TextView
     private lateinit var progressBar: ProgressBar
     private lateinit var editButton: Button
     private lateinit var deleteButton: Button
-    private lateinit var tabLayout: TabLayout
-    private lateinit var viewPager: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,21 +36,13 @@ class AnimalDetailActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         // Views
-        nameText = findViewById(R.id.animalNameText)
+        idText = findViewById(R.id.animalIdText)
         typeText = findViewById(R.id.animalTypeText)
-        breedText = findViewById(R.id.animalBreedText)
-        ageText = findViewById(R.id.animalAgeText)
-        genderText = findViewById(R.id.animalGenderText)
-        healthText = findViewById(R.id.animalHealthText)
         weightText = findViewById(R.id.animalWeightText)
-        feedText = findViewById(R.id.animalFeedText)
-        notesText = findViewById(R.id.animalNotesText)
-        statusText = findViewById(R.id.animalStatusText)
+        lastCheckupText = findViewById(R.id.animalLastCheckupText)
         progressBar = findViewById(R.id.progressBar)
         editButton = findViewById(R.id.editButton)
         deleteButton = findViewById(R.id.deleteButton)
-        tabLayout = findViewById(R.id.tabLayout)
-        viewPager = findViewById(R.id.viewPager)
 
         animalId = intent.getStringExtra("animalId") ?: ""
         val userId = auth.currentUser?.uid
@@ -74,22 +53,9 @@ class AnimalDetailActivity : AppCompatActivity() {
             return
         }
 
-        // Set up fragments in ViewPager
-        val adapter = AnimalFragmentsAdapter(this, animalId)
-        viewPager.adapter = adapter
-
-        // Attach TabLayout to ViewPager
-        val tabTitles = arrayOf("Feeding", "Medical", "Notes", "Sales")
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = tabTitles[position]
-        }.attach()
-
         fetchAnimalDetails(userId, animalId)
 
         editButton.setOnClickListener {
-            startActivity(Intent(this, EditAnimalActivity::class.java).apply {
-                putExtra("animalId", animalId)
-            })
         }
 
         deleteButton.setOnClickListener {
@@ -120,16 +86,10 @@ class AnimalDetailActivity : AppCompatActivity() {
     }
 
     private fun populateAnimalDetails(animal: Animal) {
-        nameText.text = animal.name
+        idText.text = "Animal ID: ${animal.id}"
         typeText.text = "Type: ${animal.type}"
-        breedText.text = "Breed: ${animal.breed}"
-        ageText.text = "Age: ${animal.age}"
-        genderText.text = "Gender: ${animal.gender}"
-        healthText.text = "Health: ${animal.healthStatus}"
-        weightText.text = "Weight: ${animal.weightKg} kg"
-        feedText.text = "Feed Type: ${animal.feedType}"
-        notesText.text = "Notes: ${animal.notes}"
-        statusText.text = "Status: ${animal.status}"
+        weightText.text = "Weight: ${animal.weight} kg"
+        lastCheckupText.text = "Last Checkup: ${animal.lastCheckup.ifEmpty { "N/A" }}"
     }
 
     private fun confirmDelete(userId: String, animalId: String) {
