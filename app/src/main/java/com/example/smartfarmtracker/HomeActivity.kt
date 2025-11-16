@@ -23,7 +23,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
 
-        // Initialize views
         greetingText = findViewById(R.id.tvGreeting)
         profileIcon = findViewById(R.id.ivProfile)
 
@@ -33,33 +32,29 @@ class HomeActivity : AppCompatActivity() {
 
         bottomNav = findViewById(R.id.bottomNavigation)
 
-        // Set greeting dynamically (FirebaseAuth can be used here)
-        val userName = "User" // Replace with FirebaseAuth.getInstance().currentUser?.displayName ?: "User"
+        val userName = "User"
         greetingText.text = "Welcome Back, $userName"
 
-        // Card click listeners
         cardTotalAnimals.setOnClickListener {
             startActivity(Intent(this, ManageAnimalsActivity::class.java))
         }
 
         cardSales.setOnClickListener {
-            startActivity(Intent(this, SalesActivity::class.java)) // placeholder for now
+            startActivity(Intent(this, SalesActivity::class.java))
         }
 
         cardReports.setOnClickListener {
-            startActivity(Intent(this, ReportsActivity::class.java)) // placeholder for now
+            startActivity(Intent(this, ReportsActivity::class.java))
         }
 
-        // Profile icon click
         profileIcon.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java)) // placeholder for now
+            startActivity(Intent(this, ProfileActivity::class.java))
+            startActivity(intent)
         }
 
-        // Bottom navigation listener
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    // Already on home
                     true
                 }
                 R.id.nav_profile -> {

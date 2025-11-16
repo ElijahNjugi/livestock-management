@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.example.smartfarmtracker"
-    compileSdk = 34  // ✅ fixed syntax and version
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.smartfarmtracker"
         minSdk = 24
-        targetSdk = 34  // ✅ realistic stable version
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -62,12 +62,13 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    // ✅ Firebase dependencies (cleaned duplicates + using BoM)
     implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
     implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
 
-    // ✅ Test libraries
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -40,6 +40,12 @@
             android:exported="false"
             android:theme="@style/Theme.SmartFarmTracker" />
 
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+
         <!-- Manage Animals Hub -->
         <activity
             android:name=".ManageAnimalsActivity"
