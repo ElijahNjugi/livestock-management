@@ -8,15 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.smartfarmtracker.model.Animal
 
 class AnimalAdapter(
-    private val animals: List<Animal>,
+    private val animalList: List<Animal>,
     private val onItemClick: (Animal) -> Unit
 ) : RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>() {
 
-    inner class AnimalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val idText: TextView = view.findViewById(R.id.itemAnimalId)
-        val typeText: TextView = view.findViewById(R.id.itemAnimalType)
-        val weightText: TextView = view.findViewById(R.id.itemAnimalWeight)
-        val lastCheckupText: TextView = view.findViewById(R.id.itemAnimalLastCheckup)
+    inner class AnimalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvId: TextView = itemView.findViewById(R.id.itemAnimalId)
+        val tvType: TextView = itemView.findViewById(R.id.itemAnimalType)
+        val tvWeight: TextView = itemView.findViewById(R.id.itemAnimalWeight)
+        val tvLastCheckup: TextView = itemView.findViewById(R.id.itemAnimalLastCheckup)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalViewHolder {
@@ -26,14 +26,14 @@ class AnimalAdapter(
     }
 
     override fun onBindViewHolder(holder: AnimalViewHolder, position: Int) {
-        val animal = animals[position]
-        holder.idText.text = "ID: ${animal.id}"
-        holder.typeText.text = "Type: ${animal.type}"
-        holder.weightText.text = "Weight: ${animal.weight} kg"
-        holder.lastCheckupText.text = "Last Checkup: ${animal.lastCheckup.ifEmpty { "N/A" }}"
+        val animal = animalList[position]
+        holder.tvId.text = "ID: ${animal.id}"
+        holder.tvType.text = "Type: ${animal.type}"
+        holder.tvWeight.text = "Weight: ${animal.weight}"
+        holder.tvLastCheckup.text = "Last Checkup: ${animal.lastCheckup}"
 
         holder.itemView.setOnClickListener { onItemClick(animal) }
     }
 
-    override fun getItemCount(): Int = animals.size
+    override fun getItemCount(): Int = animalList.size
 }
