@@ -1,5 +1,6 @@
 package com.example.smartfarmtracker
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -58,14 +59,41 @@ class AnimalDetailActivity : AppCompatActivity() {
 
         fetchAnimalDetails(userId, animalId)
 
+        // Edit button - open EditAnimalActivity
         editButton.setOnClickListener {
-            // TODO - Edit feature coming later
+            val intent = Intent(this, EditAnimalActivity::class.java)
+            intent.putExtra("animalId", animalId)
+            startActivity(intent)
         }
 
+        // Delete button - confirm and delete
         deleteButton.setOnClickListener {
-            confirmDelete(userId, animalId)
+            AlertDialog.Builder(this)
+                .setTitle("Delete Animal")
+                .setMessage("Are you sure you want to delete this animal?")
+                .setPositiveButton("Yes") { _, _ ->
+                    val uid = auth.currentUser?.uid
+                    if (uid.isNullOrEmpty()) {
+                        Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show()
+                        return@setPositiveButton
+                    }
+
+                    db.collection("users").document(uid)
+                        .collection("animals").document(animalId)
+                        .delete()
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Animal deleted", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(this, "Failed to delete: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
         }
 
+        // Sales button
         salesButton.setOnClickListener {
             if (animalType.isEmpty()) {
                 Toast.makeText(this, "Animal type not loaded yet", Toast.LENGTH_SHORT).show()
@@ -74,13 +102,21 @@ class AnimalDetailActivity : AppCompatActivity() {
             AddSalesDialog.newInstance(animalId, animalType)
                 .show(supportFragmentManager, "AddSale")
         }
+    }
 
-
+    override fun onResume() {
+        super.onResume()
+        // Auto-refresh when returning from EditAnimalActivity
+        val uid = auth.currentUser?.uid
+        if (!uid.isNullOrEmpty() && animalId.isNotEmpty()) {
+            fetchAnimalDetails(uid, animalId)
+        }
     }
 
     private fun fetchAnimalDetails(userId: String, animalId: String) {
         progressBar.visibility = View.VISIBLE
 
+        listener?.remove() // remove old listener if any
         listener = db.collection("users").document(userId)
             .collection("animals").document(animalId)
             .addSnapshotListener { snapshot, error ->
@@ -94,7 +130,7 @@ class AnimalDetailActivity : AppCompatActivity() {
                     val animal = snapshot.toObject(Animal::class.java)
                     if (animal != null) {
                         populateAnimalDetails(animal)
-                        animalType = animal.type   // very important
+                        animalType = animal.type
                     }
                 } else {
                     Toast.makeText(this, "Animal not found", Toast.LENGTH_SHORT).show()
@@ -108,26 +144,6 @@ class AnimalDetailActivity : AppCompatActivity() {
         typeText.text = "Type: ${animal.type}"
         weightText.text = "Weight: ${animal.weight} kg"
         lastCheckupText.text = "Last Checkup: ${animal.lastCheckup.ifEmpty { "N/A" }}"
-    }
-
-    private fun confirmDelete(userId: String, animalId: String) {
-        AlertDialog.Builder(this)
-            .setTitle("Delete Animal")
-            .setMessage("Are you sure you want to delete this animal?")
-            .setPositiveButton("Yes") { _, _ ->
-                db.collection("users").document(userId)
-                    .collection("animals").document(animalId)
-                    .delete()
-                    .addOnSuccessListener {
-                        Toast.makeText(this, "Animal deleted", Toast.LENGTH_SHORT).show()
-                        finish()
-                    }
-                    .addOnFailureListener {
-                        Toast.makeText(this, "Failed to delete", Toast.LENGTH_SHORT).show()
-                    }
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
     }
 
     override fun onDestroy() {
