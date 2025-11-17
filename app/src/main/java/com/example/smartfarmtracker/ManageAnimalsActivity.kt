@@ -39,7 +39,7 @@ class ManageAnimalsActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
 
-        // Initialize views
+        // Views
         layoutAnimalTypes = findViewById(R.id.layoutAnimalTypes)
         btnCow = findViewById(R.id.btnCow)
         btnGoat = findViewById(R.id.btnGoat)
@@ -54,7 +54,7 @@ class ManageAnimalsActivity : AppCompatActivity() {
 
         loadAnimals() // Load all animals initially
 
-        // Filter animals by type when clicking buttons
+        // Type filter click
         val typeClickListener = View.OnClickListener { view ->
             selectedType = when (view.id) {
                 R.id.btnCow -> "Cow"
@@ -64,7 +64,6 @@ class ManageAnimalsActivity : AppCompatActivity() {
                 R.id.btnPoultry -> "Poultry"
                 else -> ""
             }
-
             filterAnimalsByType(selectedType)
         }
 
@@ -74,7 +73,7 @@ class ManageAnimalsActivity : AppCompatActivity() {
         btnPig.setOnClickListener(typeClickListener)
         btnPoultry.setOnClickListener(typeClickListener)
 
-        // Go back
+        // Back button
         btnBack.setOnClickListener { finish() }
 
         // Add new animal
@@ -89,7 +88,7 @@ class ManageAnimalsActivity : AppCompatActivity() {
         }
     }
 
-    /** Load all animals for the current user */
+    /** Load all animals for current user and assign document ID */
     private fun loadAnimals() {
         val userId = auth.currentUser?.uid ?: return
 
@@ -100,7 +99,10 @@ class ManageAnimalsActivity : AppCompatActivity() {
                 animalList.clear()
                 for (doc in snapshot.documents) {
                     val animal = doc.toObject(Animal::class.java)
-                    if (animal != null) animalList.add(animal)
+                    if (animal != null) {
+                        animal.id = doc.id   // <-- important!
+                        animalList.add(animal)
+                    }
                 }
                 recyclerAnimals.adapter = AnimalAdapter(animalList) { animal ->
                     openAnimalDetails(animal)

@@ -30,7 +30,7 @@ class AnimalAdapter(
         holder.tvId.text = "ID: ${animal.id}"
         holder.tvType.text = "Type: ${animal.type}"
         holder.tvWeight.text = "Weight: ${animal.weight}"
-        holder.tvLastCheckup.text = "Last Checkup: ${animal.lastCheckup}"
+        holder.tvLastCheckup.text = "Last Checkup: ${animal.lastCheckup.ifEmpty { "N/A" }}"
 
         holder.itemView.setOnClickListener { onItemClick(animal) }
     }
