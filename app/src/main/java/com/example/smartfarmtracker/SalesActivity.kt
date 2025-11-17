@@ -34,14 +34,6 @@ class SalesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sales)
 
-        // --- Toolbar setup for Sales banner and back button ---
-        val toolbar: Toolbar = findViewById(R.id.toolbarSales)
-        setSupportActionBar(toolbar)
-        supportActionBar?.apply {
-            title = "Sales"
-            setDisplayHomeAsUpEnabled(true)
-        }
-
         recyclerView = findViewById(R.id.rvSales)
         fabAddSale = findViewById(R.id.fabAddSale)
         btnToday = findViewById(R.id.btnToday)

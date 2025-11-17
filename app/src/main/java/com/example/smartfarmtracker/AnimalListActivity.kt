@@ -3,13 +3,13 @@ package com.example.smartfarmtracker
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.smartfarmtracker.model.Animal
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.example.smartfarmtracker.model.Animal
-
 
 class AnimalListActivity : AppCompatActivity() {
 
@@ -19,12 +19,14 @@ class AnimalListActivity : AppCompatActivity() {
     private lateinit var adapter: AnimalAdapter
     private var animalList = mutableListOf<Animal>()
     private lateinit var btnAddAnimal: ImageButton
+    private lateinit var btnBack: ImageButton
     private var animalType = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animal_list)
 
+        // Get selected animal type from intent
         animalType = intent.getStringExtra("animalType") ?: ""
 
         db = FirebaseFirestore.getInstance()
@@ -32,6 +34,7 @@ class AnimalListActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerAnimals)
         btnAddAnimal = findViewById(R.id.btnAddAnimal)
+        btnBack = findViewById(R.id.btnBack)
 
         adapter = AnimalAdapter(animalList) { animal ->
             val intent = Intent(this, AnimalDetailActivity::class.java)
@@ -44,10 +47,20 @@ class AnimalListActivity : AppCompatActivity() {
 
         fetchAnimals()
 
+        // Add new animal
         btnAddAnimal.setOnClickListener {
+            if (animalType.isEmpty()) {
+                Toast.makeText(this, "No animal type selected", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val intent = Intent(this, AddAnimalActivity::class.java)
             intent.putExtra("animalType", animalType)
             startActivity(intent)
+        }
+
+        // Back button
+        btnBack.setOnClickListener {
+            finish()
         }
     }
 
@@ -66,6 +79,9 @@ class AnimalListActivity : AppCompatActivity() {
                     animalList.add(animal)
                 }
                 adapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Failed to fetch animals", Toast.LENGTH_SHORT).show()
             }
     }
 }

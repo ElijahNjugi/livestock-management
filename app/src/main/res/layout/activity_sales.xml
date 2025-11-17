@@ -6,20 +6,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="12dp"
+    android:background="@android:color/white"
     tools:context=".SalesActivity">
 
-    <!-- Toolbar with title and back button -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarSales"
+    <!-- Top Banner with back button -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:theme="?attr/actionBarTheme"
-        android:elevation="4dp"
-        app:title="Sales"
-        app:titleTextColor="@android:color/white"
-        app:navigationIcon="@drawable/ic_arrow_back" />
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@color/green_700"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back"
+            android:tint="@android:color/white"/>
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvSalesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sales"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="16dp"/>
+    </LinearLayout>
 
     <!-- Filter buttons row -->
     <LinearLayout
@@ -35,7 +55,9 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Today" />
+            android:text="Today"
+            android:backgroundTint="@color/green_100"
+            android:textColor="@android:color/black"/>
 
         <Button
             android:id="@+id/btnWeek"
@@ -44,14 +66,18 @@
             android:layout_height="wrap_content"
             android:text="This Week"
             android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp" />
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@color/green_100"
+            android:textColor="@android:color/black"/>
 
         <Button
             android:id="@+id/btnMonth"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="This Month" />
+            android:text="This Month"
+            android:backgroundTint="@color/green_100"
+            android:textColor="@android:color/black"/>
 
         <Button
             android:id="@+id/btnYear"
@@ -59,7 +85,9 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="This Year"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            android:backgroundTint="@color/green_100"
+            android:textColor="@android:color/black"/>
     </LinearLayout>
 
     <!-- RecyclerView to show sales -->
@@ -69,7 +97,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingBottom="60dp" />
+        android:paddingBottom="60dp"/>
 
     <!-- Floating Action Button to add sale -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -78,7 +106,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/green_700"
+        android:tint="@android:color/white"
         android:src="@android:drawable/ic_input_add"
-        android:contentDescription="Add Sale" />
-
+        android:contentDescription="Add Sale"/>
 </LinearLayout>
