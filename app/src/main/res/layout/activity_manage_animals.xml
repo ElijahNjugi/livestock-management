@@ -7,18 +7,19 @@
     android:padding="16dp">
 
     <!-- Title -->
+
+    <!-- Animal Type Buttons (Vertical) -->
     <TextView
         android:id="@+id/tvManageAnimalsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Manage Animals"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:text="Manage Animals"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-    <!-- Animal Type Buttons (Vertical) -->
     <LinearLayout
         android:id="@+id/layoutAnimalTypes"
         android:layout_width="match_parent"
@@ -51,26 +52,27 @@
             android:id="@+id/btnPig"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pig"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp"
+            android:text="Pig" />
 
-        <Button
-            android:id="@+id/btnPoultry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Poultry"/>
     </LinearLayout>
 
     <!-- RecyclerView to list animals -->
+    <Button
+        android:id="@+id/btnPoultry"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:text="Poultry" />
+
+    <!-- Add Animal Button -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerAnimals"
-        android:layout_width="match_parent"
+        android:layout_width="385dp"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingBottom="8dp"/>
+        android:paddingBottom="8dp" />
 
-    <!-- Add Animal Button -->
     <ImageButton
         android:id="@+id/btnAddAnimal"
         android:layout_width="wrap_content"

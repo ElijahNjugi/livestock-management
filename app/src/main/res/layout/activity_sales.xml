@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutSales"
     android:layout_width="match_parent"
@@ -8,11 +9,25 @@
     android:padding="12dp"
     tools:context=".SalesActivity">
 
+    <!-- Toolbar with title and back button -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarSales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:theme="?attr/actionBarTheme"
+        android:elevation="4dp"
+        app:title="Sales"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/ic_arrow_back" />
+
+    <!-- Filter buttons row -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp">
 
         <Button
@@ -29,7 +44,7 @@
             android:layout_height="wrap_content"
             android:text="This Week"
             android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"/>
+            android:layout_marginEnd="4dp" />
 
         <Button
             android:id="@+id/btnMonth"
@@ -44,9 +59,10 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="This Year"
-            android:layout_marginStart="4dp"/>
+            android:layout_marginStart="4dp" />
     </LinearLayout>
 
+    <!-- RecyclerView to show sales -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSales"
         android:layout_width="match_parent"
@@ -55,6 +71,7 @@
         android:clipToPadding="false"
         android:paddingBottom="60dp" />
 
+    <!-- Floating Action Button to add sale -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddSale"
         android:layout_width="wrap_content"

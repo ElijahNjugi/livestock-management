@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartfarmtracker.model.SalesEntry
@@ -33,6 +34,14 @@ class SalesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sales)
 
+        // --- Toolbar setup for Sales banner and back button ---
+        val toolbar: Toolbar = findViewById(R.id.toolbarSales)
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            title = "Sales"
+            setDisplayHomeAsUpEnabled(true)
+        }
+
         recyclerView = findViewById(R.id.rvSales)
         fabAddSale = findViewById(R.id.fabAddSale)
         btnToday = findViewById(R.id.btnToday)
@@ -56,6 +65,12 @@ class SalesActivity : AppCompatActivity() {
         btnWeek.setOnClickListener { filterSales("week") }
         btnMonth.setOnClickListener { filterSales("month") }
         btnYear.setOnClickListener { filterSales("year") }
+    }
+
+    // Handle back button click in toolbar
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     private fun fetchAllSales() {
