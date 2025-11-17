@@ -2,7 +2,6 @@ package com.example.smartfarmtracker
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -11,7 +10,6 @@ import com.google.android.material.card.MaterialCardView
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var greetingText: TextView
-    private lateinit var profileIcon: ImageView
 
     private lateinit var cardTotalAnimals: MaterialCardView
     private lateinit var cardSales: MaterialCardView
@@ -24,7 +22,6 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.home_activity)
 
         greetingText = findViewById(R.id.tvGreeting)
-        profileIcon = findViewById(R.id.ivProfile)
 
         cardTotalAnimals = findViewById(R.id.cardTotalAnimals)
         cardSales = findViewById(R.id.cardSales)
@@ -32,9 +29,11 @@ class HomeActivity : AppCompatActivity() {
 
         bottomNav = findViewById(R.id.bottomNavigation)
 
-        val userName = "User"
-        greetingText.text = "Welcome Back, $userName"
+        // Get user's first name from LoginActivity
+        val firstName = intent.getStringExtra("firstName") ?: "User"
+        greetingText.text = "Welcome Back, $firstName"
 
+        // Card click listeners
         cardTotalAnimals.setOnClickListener {
             startActivity(Intent(this, ManageAnimalsActivity::class.java))
         }
@@ -47,20 +46,16 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, ReportsActivity::class.java))
         }
 
-        profileIcon.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
-            startActivity(intent)
-        }
-
+        // Bottom navigation click listener
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_home -> {
-                    true
-                }
+                R.id.nav_home -> true
+
                 R.id.nav_profile -> {
                     startActivity(Intent(this, ProfileActivity::class.java))
                     true
                 }
+
                 else -> false
             }
         }

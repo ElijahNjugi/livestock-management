@@ -1,93 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#FAFAFA">
+    android:background="@android:color/white"
+    android:padding="16dp">
 
-    <!-- Animal Info Card -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:background="@drawable/card_bg"
-        android:elevation="3dp"
-        android:layout_marginBottom="20dp">
-
-        <TextView
-            android:id="@+id/animalIdText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Animal ID"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:id="@+id/animalTypeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Type"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:id="@+id/animalWeightText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Weight"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:id="@+id/animalLastCheckupText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Last Checkup"
-            android:layout_marginBottom="8dp" />
-    </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="12dp" />
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center_horizontal">
 
-        <Button
-            android:id="@+id/editButton"
-            android:layout_width="0dp"
+        <!-- Animal Info Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="EDIT"
-            android:backgroundTint="@color/green"
-            android:textColor="@color/white"
-            android:layout_marginEnd="8dp" />
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@color/green_100"
+            android:elevation="6dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/green_100"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="start">
 
-        <Button
-            android:id="@+id/deleteButton"
-            android:layout_width="0dp"
+            <TextView
+                android:id="@+id/animalIdText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Animal ID"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/animalTypeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/animalWeightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/animalLastCheckupText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Checkup"
+                android:layout_marginBottom="8dp" />
+        </LinearLayout>
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="DELETE"
-            android:backgroundTint="@color/red"
-            android:textColor="@color/white" />
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/editButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="EDIT"
+                android:backgroundTint="@color/green_700"
+                android:textColor="@android:color/white"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DELETE"
+                android:backgroundTint="@color/red"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnSales"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sales"
-            android:layout_marginTop="16dp"/>
+            android:backgroundTint="@color/green_700"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"/>
 
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

@@ -6,7 +6,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -14,51 +15,72 @@
             android:text="Add Animal"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="24dp"/>
 
+        <!-- Animal ID -->
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Animal ID*"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/etAnimalId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Animal ID"/>
+            android:hint="Enter Animal ID"
+            android:padding="10dp"
+            android:background="@android:drawable/edit_text"/>
 
+        <!-- Type -->
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Type*"
             android:textStyle="bold"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="16dp"/>
         <Spinner
             android:id="@+id/spAnimalType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <!-- Weight -->
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Weight*"
             android:textStyle="bold"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="16dp"/>
         <EditText
             android:id="@+id/etWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Weight"/>
+            android:hint="Enter Weight"
+            android:padding="10dp"
+            android:background="@android:drawable/edit_text"/>
 
+        <!-- Last Checkup -->
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Last Checkup Date"
             android:textStyle="bold"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="16dp"/>
         <EditText
             android:id="@+id/etLastCheckup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="yyyy-MM-dd (optional)"/>
+            android:hint="yyyy-MM-dd (optional)"
+            android:padding="10dp"
+            android:background="@android:drawable/edit_text"/>
 
+        <!-- Add Animal Button -->
         <Button
             android:id="@+id/btnAddAnimal"
             android:text="Add Animal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/green_700"
+            android:textColor="@android:color/white"/>
     </LinearLayout>
 </ScrollView>
