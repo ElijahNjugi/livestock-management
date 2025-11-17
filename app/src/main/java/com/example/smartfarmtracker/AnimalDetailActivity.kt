@@ -27,6 +27,9 @@ class AnimalDetailActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var editButton: Button
     private lateinit var deleteButton: Button
+    private lateinit var salesButton: Button
+
+    private var animalType: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +38,6 @@ class AnimalDetailActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
 
-        // Views
         idText = findViewById(R.id.animalIdText)
         typeText = findViewById(R.id.animalTypeText)
         weightText = findViewById(R.id.animalWeightText)
@@ -43,6 +45,7 @@ class AnimalDetailActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
         editButton = findViewById(R.id.editButton)
         deleteButton = findViewById(R.id.deleteButton)
+        salesButton = findViewById(R.id.btnSales)
 
         animalId = intent.getStringExtra("animalId") ?: ""
         val userId = auth.currentUser?.uid
@@ -56,11 +59,23 @@ class AnimalDetailActivity : AppCompatActivity() {
         fetchAnimalDetails(userId, animalId)
 
         editButton.setOnClickListener {
+            // TODO - Edit feature coming later
         }
 
         deleteButton.setOnClickListener {
             confirmDelete(userId, animalId)
         }
+
+        salesButton.setOnClickListener {
+            if (animalType.isEmpty()) {
+                Toast.makeText(this, "Animal type not loaded yet", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            AddSalesDialog.newInstance(animalId, animalType)
+                .show(supportFragmentManager, "AddSale")
+        }
+
+
     }
 
     private fun fetchAnimalDetails(userId: String, animalId: String) {
@@ -77,7 +92,10 @@ class AnimalDetailActivity : AppCompatActivity() {
 
                 if (snapshot != null && snapshot.exists()) {
                     val animal = snapshot.toObject(Animal::class.java)
-                    if (animal != null) populateAnimalDetails(animal)
+                    if (animal != null) {
+                        populateAnimalDetails(animal)
+                        animalType = animal.type   // very important
+                    }
                 } else {
                     Toast.makeText(this, "Animal not found", Toast.LENGTH_SHORT).show()
                     finish()

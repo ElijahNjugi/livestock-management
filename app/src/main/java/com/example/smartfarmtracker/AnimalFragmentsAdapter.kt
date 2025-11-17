@@ -6,14 +6,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class AnimalFragmentsAdapter(
     fragmentActivity: FragmentActivity,
-    private val animalId: String
+    private val animalId: String,
+    private val animalType: String
 ) : FragmentStateAdapter(fragmentActivity) {
 
     private val fragments: List<Fragment> = listOf(
-        FeedingFragment.newInstance(animalId),
-        MedicalFragment.newInstance(animalId),
-        NotesFragment.newInstance(animalId),
-        SalesFragment.newInstance(animalId)
+        SalesFragment.newInstance(animalId, animalType)
     )
 
     override fun getItemCount(): Int = fragments.size

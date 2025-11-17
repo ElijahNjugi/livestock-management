@@ -1,24 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="12dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="12dp"
     android:background="@drawable/card_bg"
+    android:elevation="2dp"
     android:layout_marginBottom="8dp">
 
-    <TextView android:id="@+id/saleDate"
+    <TextView
+        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Date"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginBottom="2dp" />
 
-    <TextView android:id="@+id/saleItem"
+    <TextView
+        android:id="@+id/tvAnimalType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item sold"/>
+        android:text="Animal Type"
+        android:layout_marginBottom="2dp" />
 
-    <TextView android:id="@+id/saleAmount"
+    <TextView
+        android:id="@+id/tvProduce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Amount"/>
+        android:text="Produce"
+        android:layout_marginBottom="2dp" />
+
+    <TextView
+        android:id="@+id/tvQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity"
+        android:layout_marginBottom="2dp" />
+
+    <TextView
+        android:id="@+id/tvUnitPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unit Price"
+        android:layout_marginBottom="2dp" />
+
+    <TextView
+        android:id="@+id/tvTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total"
+        android:layout_marginBottom="2dp" />
+
+    <TextView
+        android:id="@+id/tvNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notes" />
+
+    <TextView
+        android:id="@+id/tvSaleDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date" />
+
 </LinearLayout>

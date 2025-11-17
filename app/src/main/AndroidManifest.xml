@@ -66,6 +66,7 @@
 
         <!-- Edit Animal -->
         <activity android:name=".EditAnimalActivity" />
+        <activity android:name=".SalesActivity" />
 
     </application>
 

@@ -1,14 +1,59 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:padding="16dp">
-    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-        <EditText android:id="@+id/etSaleDate" android:hint="Date of Sale" android:focusable="false" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <Spinner android:id="@+id/spinnerItem" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <EditText android:id="@+id/etSaleQty" android:hint="Quantity" android:inputType="numberDecimal" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <Spinner android:id="@+id/spinnerSaleUnit" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <EditText android:id="@+id/etPricePerUnit" android:hint="Price per Unit" android:inputType="numberDecimal" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <TextView android:id="@+id/tvTotalAmount" android:text="Total: 0.0" android:textSize="16sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp"/>
-        <Button android:id="@+id/btnSaveSale" android:text="Save" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp"/>
-    </LinearLayout>
-</ScrollView>
+    <EditText
+        android:id="@+id/edtSaleDate"
+        android:hint="Date of Sale"
+        android:focusable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/spinnerProduceType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edtQuantity"
+        android:hint="Quantity Sold"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edtUnitPrice"
+        android:hint="Unit Price"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edtBuyerName"
+        android:hint="Buyer Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edtNotes"
+        android:hint="Notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnSaveSale"
+        android:text="Save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ProgressBar
+        android:id="@+id/progressBarSales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+</LinearLayout>

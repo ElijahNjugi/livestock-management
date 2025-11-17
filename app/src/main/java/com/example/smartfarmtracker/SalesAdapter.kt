@@ -6,15 +6,20 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartfarmtracker.R
-import com.example.smartfarmtracker.model.Sale
+import com.example.smartfarmtracker.model.SalesEntry
+import java.text.SimpleDateFormat
+import java.util.*
 
-class SalesAdapter(private val items: List<Sale>) :
+class SalesAdapter(private val salesList: MutableList<SalesEntry>) :
     RecyclerView.Adapter<SalesAdapter.SalesViewHolder>() {
 
-    class SalesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val dateText: TextView = view.findViewById(R.id.saleDate)
-        val itemText: TextView = view.findViewById(R.id.saleItem)
-        val amountText: TextView = view.findViewById(R.id.saleAmount)
+    inner class SalesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvDate: TextView = itemView.findViewById(R.id.tvSaleDate)
+        val tvAnimalType: TextView = itemView.findViewById(R.id.tvAnimalType)
+        val tvProduce: TextView = itemView.findViewById(R.id.tvProduce)
+        val tvQuantity: TextView = itemView.findViewById(R.id.tvQuantity)
+        val tvUnitPrice: TextView = itemView.findViewById(R.id.tvUnitPrice)
+        val tvTotal: TextView = itemView.findViewById(R.id.tvTotal)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SalesViewHolder {
@@ -23,12 +28,22 @@ class SalesAdapter(private val items: List<Sale>) :
         return SalesViewHolder(view)
     }
 
-    override fun getItemCount() = items.size
-
     override fun onBindViewHolder(holder: SalesViewHolder, position: Int) {
-        val item = items[position]
-        holder.dateText.text = item.date
-        holder.itemText.text = item.itemName
-        holder.amountText.text = "$${item.amount}"
+        val sale = salesList[position]
+        val sdf = SimpleDateFormat("d/M/yyyy", Locale.getDefault())
+        holder.tvDate.text = "Date: ${sale.dateOfSale?.toDate()?.let { sdf.format(it) } ?: "N/A"}"
+        holder.tvAnimalType.text = "Animal: ${sale.animalType}"
+        holder.tvProduce.text = "Produce: ${sale.produceType}"
+        holder.tvQuantity.text = "Qty: ${sale.quantity}"
+        holder.tvUnitPrice.text = "Unit Price: ${sale.unitPrice}"
+        holder.tvTotal.text = "Total: ${sale.totalAmount}"
+    }
+
+    override fun getItemCount(): Int = salesList.size
+
+    fun updateList(newList: List<SalesEntry>) {
+        salesList.clear()
+        salesList.addAll(newList)
+        notifyDataSetChanged()
     }
 }
