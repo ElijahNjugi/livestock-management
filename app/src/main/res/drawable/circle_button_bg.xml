@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/green_100" /> <!-- change color as needed -->
+
+    <corners android:radius="50dp" /> <!-- makes it circular if height = width -->
+
+</shape>

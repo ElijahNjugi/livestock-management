@@ -25,7 +25,6 @@
             android:contentDescription="Back"
             android:tint="@android:color/white"/>
 
-
         <TextView
             android:id="@+id/tvManageAnimalsTitle"
             android:layout_width="wrap_content"
@@ -41,7 +40,8 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:scrollbars="none">
 
         <LinearLayout
             android:id="@+id/layoutAnimalTypes"
@@ -101,20 +101,21 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerAnimals"
         android:layout_width="match_parent"
-        android:layout_height="393dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:scrollbars="vertical"/>
 
-    <!-- Add Animal Button -->
+    <!-- Add Animal Button floating at bottom-right -->
     <ImageButton
         android:id="@+id/btnAddAnimal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:src="@android:drawable/ic_input_add"
         android:contentDescription="Add Animal"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:background="@drawable/circle_button_bg"
         android:tint="@color/green_700"
-        android:layout_gravity="end"
+        android:layout_gravity="end|bottom"
         android:layout_margin="16dp"/>
 </LinearLayout>
