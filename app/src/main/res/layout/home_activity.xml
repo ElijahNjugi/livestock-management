@@ -90,6 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:backgroundTint="@color/green_100"
+                android:visibility="gone"
                 app:cardElevation="6dp"
                 app:cardCornerRadius="12dp">
 
