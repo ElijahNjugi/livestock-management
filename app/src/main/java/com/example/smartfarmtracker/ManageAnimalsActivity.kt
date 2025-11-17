@@ -56,12 +56,18 @@ class ManageAnimalsActivity : AppCompatActivity() {
             }
 
             if (selectedType.isNotEmpty()) {
-                // Open AnimalListActivity with the selected type
                 val intent = Intent(this, AnimalListActivity::class.java)
                 intent.putExtra("animalType", selectedType)
                 startActivity(intent)
             }
         }
+        val btnBack: ImageButton = findViewById(R.id.btnBack)
+        btnBack.setImageResource(R.drawable.ic_arrow_back)
+        btnBack.setColorFilter(resources.getColor(android.R.color.white))
+        btnBack.setOnClickListener {
+            finish()
+        }
+
 
         btnCow.setOnClickListener(typeClickListener)
         btnGoat.setOnClickListener(typeClickListener)
@@ -69,7 +75,6 @@ class ManageAnimalsActivity : AppCompatActivity() {
         btnPig.setOnClickListener(typeClickListener)
         btnPoultry.setOnClickListener(typeClickListener)
 
-        // Add new animal button
         btnAddAnimal.setOnClickListener {
             if (selectedType.isEmpty()) {
                 Toast.makeText(this, "Please select an animal type first", Toast.LENGTH_SHORT).show()

@@ -4,75 +4,109 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@android:color/white">
 
-    <!-- Title -->
-
-    <!-- Animal Type Buttons (Vertical) -->
-    <TextView
-        android:id="@+id/tvManageAnimalsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:text="Manage Animals"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
+    <!-- Top Banner -->
     <LinearLayout
-        android:id="@+id/layoutAnimalTypes"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="16dp">
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@color/green_700"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical">
 
-        <Button
-            android:id="@+id/btnCow"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cow"
-            android:layout_marginBottom="8dp"/>
+            android:src="@drawable/ic_arrow_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back"
+            android:tint="@android:color/white"/>
 
-        <Button
-            android:id="@+id/btnGoat"
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/tvManageAnimalsTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Goat"
-            android:layout_marginBottom="8dp"/>
-
-        <Button
-            android:id="@+id/btnSheep"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sheep"
-            android:layout_marginBottom="8dp"/>
-
-        <Button
-            android:id="@+id/btnPig"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Pig" />
-
+            android:text="Manage Animals"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="16dp"/>
     </LinearLayout>
 
-    <!-- RecyclerView to list animals -->
-    <Button
-        android:id="@+id/btnPoultry"
-        android:layout_width="375dp"
+    <!-- Animal Type Buttons (Horizontal Scrollable) -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Poultry" />
+        android:padding="8dp">
 
-    <!-- Add Animal Button -->
+        <LinearLayout
+            android:id="@+id/layoutAnimalTypes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:weightSum="5">
+
+            <Button
+                android:id="@+id/btnCow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cow"
+                android:backgroundTint="@color/green_100"
+                android:textColor="@android:color/black"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnGoat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Goat"
+                android:backgroundTint="@color/green_100"
+                android:textColor="@android:color/black"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnSheep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sheep"
+                android:backgroundTint="@color/green_100"
+                android:textColor="@android:color/black"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnPig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pig"
+                android:backgroundTint="@color/green_100"
+                android:textColor="@android:color/black"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnPoultry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Poultry"
+                android:backgroundTint="@color/green_100"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- RecyclerView (Vertical List) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerAnimals"
-        android:layout_width="385dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="393dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingBottom="8dp" />
+        android:padding="16dp" />
 
+    <!-- Add Animal Button -->
     <ImageButton
         android:id="@+id/btnAddAnimal"
         android:layout_width="wrap_content"
@@ -80,7 +114,7 @@
         android:src="@android:drawable/ic_input_add"
         android:contentDescription="Add Animal"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:tint="@color/green_700"
         android:layout_gravity="end"
-        android:layout_marginTop="8dp"/>
-
+        android:layout_margin="16dp"/>
 </LinearLayout>
